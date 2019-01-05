@@ -1,60 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="relation_externe.list">
-      <field name="name">relation_externe list</field>
-      <field name="model">relation_externe.relation_externe</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
+    <data>
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="relation_externe.action_window">
-      <field name="name">relation_externe window</field>
-      <field name="res_model">relation_externe.relation_externe</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
+      <record id="view_relation_externe_form" model="ir.ui.view">
+        <field name="name">view.relation.externe.form</field>
+        <field name="model">relation.externe</field>
+        <field name="arch" type="xml">
+          <form name="Demande de prise en charge form">
+              <header>
+                  <button name="confirm_request" string="Confirmer" class="oe_highlight" states="draft" type="object"/>
+                  <button name="validate_request" string="Valider" class="oe_highlight" states="confirm" type="object" />
+                  <button name="approve_request" string="Approver" class="oe_highlight" states="validate" type="object"/>
+                  <button name="refuse_request" string="Refuser" states="confirm,validate" type="object" />
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="relation_externe.action_server">
-      <field name="name">relation_externe server</field>
-      <field name="model_id" ref="model_relation_externe_relation_externe"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
+                  <field name="state" widget="statusbar" statusbar_visible="draft,confirm,validate"/>
+              </header>
+            <sheet>
+              <div class="oe_title">
+                  <label for="name" class="oe_edit_only"/>
+                  <h1>
+                      <field name="name" placeholder="Demande"/>
+                  </h1>
+              </div>
+              <group>
+                  <group>
+                      <field name="motive"/>
+                      <field name="date_from"/>
+                      <field name="date_to"/>
+                  </group>
+                  <group>
+                      <field name="employee_id"/>
+                  </group>
+              </group>
+            </sheet>
+              <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+          </form>
 
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="relation_externe" id="relation_externe.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="relation_externe.menu_1" parent="relation_externe.menu_root"/>
-    <menuitem name="Menu 2" id="relation_externe.menu_2" parent="relation_externe.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="relation_externe.menu_1_list" parent="relation_externe.menu_1"
-              action="relation_externe.action_window"/>
-    <menuitem name="Server to list" id="relation_externe" parent="relation_externe.menu_2"
-              action="relation_externe.action_server"/>
-    -->
-  </data>
+        </field>
+      </record>
+
+        <record id="view_relation_externe_tree" model="ir.ui.view">
+            <field name="name">view.relation.externe.tree</field>
+            <field name="model">relation.externe</field>
+            <field name="arch" type="xml">
+                <tree string="Demande tree">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="motive"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_relation_externe_views" model="ir.actions.act_window">
+            <field name="name">Demande prise en charge</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">relation.externe</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Demande prise en charge
+              </p><p>
+                Click pour ajouter
+              </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="menu_relation_externe_root" name="Demandee" sequence="10"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menu_relation_externe_categ" name="Demandeee" parent="menu_relation_externe_root" sequence="1"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_relation_externe" name="Demandeeee" parent="menu_relation_externe_categ" action="action_relation_externe_views" sequence="1"/>
+
+
+    </data>
 </odoo>
