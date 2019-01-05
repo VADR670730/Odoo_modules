@@ -1,0 +1,13 @@
+<odoo>
+      <record id="view_form_product_extend" model="ir.ui.view">
+        <field name="name">Product inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='standard_price']" position="after">
+                <label for="price_3" />
+                <field name="price_3" />
+            </xpath>
+        </field>
+      </record>
+</odoo>
