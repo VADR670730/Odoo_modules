@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_relation_externe_relation_externe,relation_externe.relation_externe,model_relation_externe_relation_externe,,1,0,0,0
+access_relation_externe,relation_externe.relation_externe,model_relation_externe,,1,1,1,1
