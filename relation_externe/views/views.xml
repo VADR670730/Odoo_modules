@@ -49,7 +49,6 @@
                 <tree string="Demande tree">
                     <field name="name"/>
                     <field name="employee_id"/>
-                    <field name="motive"/>
                     <field name="date_from"/>
                     <field name="date_to"/>
                 </tree>
