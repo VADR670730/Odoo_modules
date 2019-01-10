@@ -1,0 +1,30 @@
+<odoo>
+  <data>
+    <record model="ir.module.category" id="module_management">
+      <field name="name">Droit d'accées Post-grad</field>
+      <field name="description">User access level for this module</field>
+      <field name="sequence">3</field>
+    </record>
+
+    <record id="relation_externe.group_dpgr" model="res.groups">
+        <field name="name">DPGR</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="category_id" ref="module_management"/>
+    </record>
+
+    <record id="relation_externe.group_doctorant" model="res.groups">
+         <field name="name">Doctorant</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="category_id" ref="module_management"/>
+    </record>
+    <record id="relation_externe.group_dri" model="res.groups">
+        <field name="name">DRI</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="category_id" ref="module_management"/>
+    </record>
+  </data>
+</odoo>
+

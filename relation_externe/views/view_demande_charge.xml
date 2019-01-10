@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_demande_charge_form" model="ir.ui.view">
+        <field name="name">view.demande.charge.form</field>
+        <field name="model">demande.charge</field>
+        <field name="arch" type="xml">
+          <form name="Demande de prise en charge form">
+              <header>
+                  <button name="confirm_request" string="Confirmer" class="oe_highlight" states="draft,incomplet" type="object" groups="relation_externe.group_dpgr"/>
+                  <button name="validate_request" string="Valider" class="oe_highlight" states="confirm" type="object" groups="relation_externe.group_dpgr"/>
+                  <button name="approve_request" string="Approver" class="oe_highlight" states="validate" type="object" groups="relation_externe.group_dpgr"/>
+                  <button name="refuse_request" string="Refuser" states="confirm,validate" type="object" groups="relation_externe.group_dpgr"/>
+                  <button name="incomplet_request" string="Incomplet" states="draft" type="object" groups="relation_externe.group_dpgr"/>
+                  <field name="state" widget="statusbar" statusbar_visible="draft,confirm,validate"/>
+              </header>
+            <sheet>
+              <div class="oe_title">
+                  <label for="name" class="oe_edit_only"/>
+                  <h1>
+                      <field name="name" placeholder="Demande"/>
+                  </h1>
+              </div>
+              <group>
+                  <group>
+                      <field name="motive"/>
+                      <field name="date_from"/>
+                      <field name="date_to"/>
+                  </group>
+                  <group>
+                      <field name="employee_id"/>
+                  </group>
+              </group>
+            </sheet>
+              <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+          </form>
+
+        </field>
+      </record>
+
+        <record id="view_demande_charge_tree" model="ir.ui.view">
+            <field name="name">view.demande.charge.tree</field>
+            <field name="model">demande.charge</field>
+            <field name="arch" type="xml">
+                <tree string="Demande tree">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_demande_charge_views" model="ir.actions.act_window">
+            <field name="name">Demande prise en charge</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">demande.charge</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Demande prise en charge
+              </p><p>
+                Click pour ajouter
+              </p>
+            </field>
+        </record>
+
+
+
+
+
+
+
+        <menuitem id="menu_post_doc_root" name="Post-grad" sequence="10" groups="relation_externe.group_dri,relation_externe.group_dpgr,relation_externe.group_doctorant"/>
+        <menuitem id="menu_demande_charge" name="Demande de prise charge" parent="menu_post_doc_root" sequence="1" action="action_demande_charge_views"  groups="relation_externe.group_dri,relation_externe.group_dpgr,relation_externe.group_doctorant"/>
+
+
+
+    </data>
+</odoo>
