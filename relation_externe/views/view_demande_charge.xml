@@ -7,11 +7,12 @@
         <field name="arch" type="xml">
           <form name="Demande de prise en charge form">
               <header>
-                  <button name="confirm_request" string="Confirmer" class="oe_highlight" states="draft,incomplet" type="object" groups="relation_externe.group_dpgr"/>
-                  <button name="validate_request" string="Valider" class="oe_highlight" states="confirm" type="object" groups="relation_externe.group_dpgr"/>
-                  <button name="approve_request" string="Approver" class="oe_highlight" states="validate" type="object" groups="relation_externe.group_dpgr"/>
-                  <button name="refuse_request" string="Refuser" states="confirm,validate" type="object" groups="relation_externe.group_dpgr"/>
-                  <button name="incomplet_request" string="Incomplet" states="draft" type="object" groups="relation_externe.group_dpgr"/>
+                  <button name="confirm_request" string="Confirmer" class="oe_highlight" states="draft,incomplet" type="object" groups="relation_externe.group_superuser,relation_externe.group_dpgr"/>
+                  <button name="validate_request" string="Valider" class="oe_highlight" states="confirm" type="object" groups="relation_externe.group_superuser,relation_externe.group_dpgr"/>
+                  <button name="approve_request" string="Approver" class="oe_highlight" states="validate" type="object" groups="relation_externe.group_superuser,relation_externe.group_dpgr"/>
+                  <button name="refuse_request" string="Refuser" states="confirm,validate" type="object" groups="relation_externe.group_superuser,relation_externe.group_dpgr"/>
+                  <button name="incomplet_request" string="Incomplet" states="draft" type="object" groups="relation_externe.group_superuser,relation_externe.group_dpgr"/>
+                  <button name="action_bon_commande" string="Creer bon de commande" class="oe_highlight" states="approved" type="action" groups="relation_externe.group_superuser,relation_externe.group_dri"/>
                   <field name="state" widget="statusbar" statusbar_visible="draft,confirm,validate"/>
               </header>
             <sheet>
@@ -29,6 +30,9 @@
                   </group>
                   <group>
                       <field name="employee_id"/>
+                      <field name="file" filename="file_name"/>
+
+                      <field name="file_name" invisible="1"/>
                   </group>
               </group>
             </sheet>
@@ -74,8 +78,9 @@
 
 
 
-        <menuitem id="menu_post_doc_root" name="Post-grad" sequence="10" groups="relation_externe.group_dri,relation_externe.group_dpgr,relation_externe.group_doctorant"/>
-        <menuitem id="menu_demande_charge" name="Demande de prise charge" parent="menu_post_doc_root" sequence="1" action="action_demande_charge_views"  groups="relation_externe.group_dri,relation_externe.group_dpgr,relation_externe.group_doctorant"/>
+
+        <menuitem id="menu_post_doc_root" name="Post-grad" sequence="10" groups="relation_externe.group_superuser,relation_externe.group_dri,relation_externe.group_dpgr,relation_externe.group_doctorant"/>
+        <menuitem id="menu_demande_charge" name="Demande de prise charge" parent="menu_post_doc_root" sequence="1" action="action_demande_charge_views"  groups="relation_externe.group_superuser,relation_externe.group_dri,relation_externe.group_dpgr,relation_externe.group_doctorant"/>
 
 
 

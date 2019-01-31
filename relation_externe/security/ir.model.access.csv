@@ -1,9 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_demande_charge_dpgr,Model dpgr access,model_demande_charge,relation_externe.group_dpgr,1,1,1,1
+access_demande_charge_dpgr,Model dpgr access,model_demande_charge,relation_externe.group_dpgr,1,1,0,0
 access_demande_charge_doctorant,Model doctorant access,model_demande_charge,relation_externe.group_doctorant,1,1,1,0
 access_demande_charge_dri,Model dri access,model_demande_charge,relation_externe.group_dri,1,0,0,0
+access_demande_charge_superuser,Model superuser access,model_demande_charge,relation_externe.group_superuser,1,1,1,1
 
-access_bon_commande_dpgr,Model dpgr access,model_bon_commande,relation_externe.group_dpgr,1,0,0,0
+access_bon_commande_dpgr,Model dpgr access,model_bon_commande,relation_externe.group_dpgr,0,0,0,0
 access_bon_commande_doctorant,Model doctorant access,model_bon_commande,relation_externe.group_doctorant,1,0,0,0
 access_bon_commande_dri,Model dri access,model_bon_commande,relation_externe.group_dri,1,1,1,1
+access_bon_commande_superuser,Model superuser access,model_bon_commande,relation_externe.group_superuser,1,1,1,1

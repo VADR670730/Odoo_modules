@@ -4,6 +4,12 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form" />
         <field name="arch" type="xml">
+             <xpath expr="//page[@name='hr_settings']" position="attributes">
+                 <attribute name="invisible">True</attribute>
+            </xpath>
+             <xpath expr="//page[@name='personal_information']" position="attributes">
+                 <attribute name="invisible">True</attribute>
+            </xpath>
             <xpath expr="//field[@name='parent_id']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
@@ -13,6 +19,15 @@
             <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
+            <xpath expr="//field[@name='address_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+
+
+             <xpath expr="//field[@name='job_title']" position="after">
+                <field name="res_group_id" />
+            </xpath>
+
         </field>
       </record>
 </odoo>

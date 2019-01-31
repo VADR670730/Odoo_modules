@@ -1,0 +1,19 @@
+<odoo>
+      <record id="view_form_event_extend" model="ir.ui.view">
+        <field name="name">Event inherit</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='twitter_hashtag']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+             <xpath expr="//field[@name='auto_confirm']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+
+
+
+        </field>
+      </record>
+</odoo>

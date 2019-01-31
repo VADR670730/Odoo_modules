@@ -10,7 +10,9 @@
         <field name="model">bon.commande</field>
         <field name="arch" type="xml">
           <form name="Les Bons de commandes ">
-
+            <header>
+<button name="get_report" string="Get Report" type="object" class="oe_highlight"/>
+              </header>
             <sheet>
               <div class="oe_title">
                   <label for="name" class="oe_edit_only"/>
@@ -67,13 +69,26 @@
         </record>
 
 
+        <record id="action_res_demande_charge" model="ir.actions.act_window">
+            <field name="name">Bon de commande</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bon.commande</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_bon_commande_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <act_window id="action_bon_commande"
+                name="Bon de commande"
+                res_model="bon.commande"
+                view_mode="form"
+                target="new"/>
 
 
 
 
-
-
-        <menuitem id="menu_bon_commande" name="Bon de commmande" parent="menu_post_doc_root" sequence="2" action="action_bon_commande_views"  groups="relation_externe.group_dri,relation_externe.group_dpgr,relation_externe.group_doctorant"/>
+        <menuitem id="menu_bon_commande" name="Bon de commmande" parent="menu_post_doc_root" sequence="2" action="action_bon_commande_views"  groups="relation_externe.group_superuser,relation_externe.group_dri,relation_externe.group_doctorant"/>
 
 
 
