@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
     <!--
-    <record model="ir.ui.view" id="relation_externe.list">
-      <field name="name">relation_externe list</field>
-      <field name="model">relation_externe.relation_externe</field>
+    <record model="ir.ui.view" id="employee_update.list">
+      <field name="name">employee_update list</field>
+      <field name="model">employee_update.employee_update</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,18 +17,18 @@
 
     <!-- actions opening views on models -->
     <!--
-    <record model="ir.actions.act_window" id="relation_externe.action_window">
-      <field name="name">relation_externe window</field>
-      <field name="res_model">relation_externe.relation_externe</field>
+    <record model="ir.actions.act_window" id="employee_update.action_window">
+      <field name="name">employee_update window</field>
+      <field name="res_model">employee_update.employee_update</field>
       <field name="view_mode">tree,form</field>
     </record>
     -->
 
     <!-- server action to the one above -->
     <!--
-    <record model="ir.actions.server" id="relation_externe.action_server">
-      <field name="name">relation_externe server</field>
-      <field name="model_id" ref="model_relation_externe_relation_externe"/>
+    <record model="ir.actions.server" id="employee_update.action_server">
+      <field name="name">employee_update server</field>
+      <field name="model_id" ref="model_employee_update_employee_update"/>
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -42,19 +42,19 @@
 
     <!-- Top menu item -->
     <!--
-    <menuitem name="relation_externe" id="relation_externe.menu_root"/>
+    <menuitem name="employee_update" id="employee_update.menu_root"/>
     -->
     <!-- menu categories -->
     <!--
-    <menuitem name="Menu 1" id="relation_externe.menu_1" parent="relation_externe.menu_root"/>
-    <menuitem name="Menu 2" id="relation_externe.menu_2" parent="relation_externe.menu_root"/>
+    <menuitem name="Menu 1" id="employee_update.menu_1" parent="employee_update.menu_root"/>
+    <menuitem name="Menu 2" id="employee_update.menu_2" parent="employee_update.menu_root"/>
     -->
     <!-- actions -->
     <!--
-    <menuitem name="List" id="relation_externe.menu_1_list" parent="relation_externe.menu_1"
-              action="relation_externe.action_window"/>
-    <menuitem name="Server to list" id="relation_externe" parent="relation_externe.menu_2"
-              action="relation_externe.action_server"/>
+    <menuitem name="List" id="employee_update.menu_1_list" parent="employee_update.menu_1"
+              action="employee_update.action_window"/>
+    <menuitem name="Server to list" id="employee_update" parent="employee_update.menu_2"
+              action="employee_update.action_server"/>
     -->
   </data>
 </odoo>

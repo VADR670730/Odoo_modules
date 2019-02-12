@@ -1,0 +1,60 @@
+<odoo>
+    <record model="report.paperformat" id="paperformat_bon_commande_report">
+        <field name="name">paperformat.bon.commande.report</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_right">5</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">20</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="bon_commande_report"
+            model="bon.commande"
+            string="Bon de commande"
+            report_type="qweb-pdf"
+            name="relation_externe.bon_commande_report_view"
+            paperformat="paperformat_bon_commande_report"
+            menu="False"/>
+
+    <template id="bon_commande_report_view">
+        <div class="header" style="border-bottom: 2px solid black">
+            <h3 class="text-center">Bon de commande</h3>
+            <h4 class="text-center">
+               Esi
+            </h4>
+        </div>
+        <div class="article">
+            <ul class="list-inline" style="margin-top:10px;">
+                        <li>Numéro: <span t-esc="name"/></li>
+                                        <li>Date depart: <span t-esc="date_from"/></li>
+
+                                        <li>Date retour: <span t-esc="date_to"/></li>
+                        <li>employee: <span t-esc="employee_id"/></li>
+                                        <li>Montant: <span t-esc="value"/></li>
+
+
+
+            </ul>
+
+
+
+        </div>
+        <div class="footer">
+            <div class="row text-center" style="border-top: 1px solid black;">
+                <div class="col-xs-3 col-xs-offset-9 text-right">
+                    <ul class="list-inline" style="margin-top:10px;">
+                        <li><h4>Esi signature here:</h4></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>
